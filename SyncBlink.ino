@@ -1,20 +1,21 @@
+// Blinks a byte from 128 to 255, followed by fixed 149.
+// So patterned blinked always starts with a 1 (HIGH),
+// 149 is bounded asymmetric pattern (10010101)
 #define timingPin 13
 #define triggerPin 8
 
-#define TON 100
-#define TOFF 100
-#define PAUSE 300
+#define TON 100 // time pulse is HIGH if on
+#define TOFF 100 // time between pulses
+#define PAUSE 300 // time between Bytes
 
 byte counter = 128;
 
 void setup() {
-  // put your setup code here, to run once:
   pinMode(timingPin, OUTPUT);
   Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   for (byte counter = 128; counter < 255; counter++) {
     flash(counter);
     flash(149);
